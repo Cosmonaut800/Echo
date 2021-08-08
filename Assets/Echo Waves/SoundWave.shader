@@ -41,6 +41,7 @@
 		float _WaveRadius[32];
 		float _WaveLife[32];
 		int _WaveCount;
+		fixed4 _WaveColor[32];
 		float _Engine;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
@@ -57,11 +58,9 @@
 			{
 				float dist = distance(IN.worldPos.xyz, _WaveOrigin[i].xyz);
 
-				fixed4 e = c * fixed4(0.5f, 0.5f, 1.0f, 1.0f);
+				fixed4 e = c * _WaveColor[i];
 				e *= _WaveLife[i];
-				//o.Emission += float3(0.0f, 0.0f, c.b * ((dist < _WaveRadius[i]) && (dist > (_WaveRadius[i] - halfWidth))));
-				//o.Emission += float3(max(0.5f * c.r * (dist < _WaveRadius[i]) * dist / _WaveRadius[i], 0.0f), max(0.5f * c.g * (dist < _WaveRadius[i]) * dist / _WaveRadius[i], 0.0f), max(c.b * (dist < _WaveRadius[i]) * dist/_WaveRadius[i], 0.0f));
-				o.Emission += max(e.rgb * (dist < _WaveRadius[i]) * pow(dist / _WaveRadius[i], 1.0f), 0.0f);
+				o.Emission += max(e.rgb * (dist < _WaveRadius[i]) * pow(dist / _WaveRadius[i], 2.0f), 0.0f);
 			}
 
             o.Albedo = c.rgb;
