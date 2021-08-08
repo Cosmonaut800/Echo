@@ -12,6 +12,7 @@ public class EchoWaveManager : MonoBehaviour
 	private Vector4[] waveSource = new Vector4[32];
 	private float[] waveRadius = new float[32];
 	private float[] waveLife = new float[32];
+	private Color[] waveColor = new Color[32];
 
 	private float engine = 0.0f;
     // Start is called before the first frame update
@@ -82,10 +83,10 @@ public class EchoWaveManager : MonoBehaviour
 	{
 		for(int i=0; i<echoWaves.Length; i++)
 		{
-			Debug.Log(i);
 			waveSource[i] = echoWaves[i].source.position;
 			waveRadius[i] = echoWaves[i].getRadius();
 			waveLife[i] = echoWaves[i].remainingLife()/echoWaves[i].maxLife;
+			waveColor[i] = echoWaves[i].getColor();
 		}
 	}
 }

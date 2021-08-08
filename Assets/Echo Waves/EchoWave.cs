@@ -11,7 +11,6 @@ public class EchoWave// : MonoBehaviour
 	private float life;
 	private float radius;
 	private float speed;
-	private Color procColor;
 	private bool propagating;
 	
 
@@ -36,7 +35,6 @@ public class EchoWave// : MonoBehaviour
 			radius += 20.0f * speed * Time.deltaTime;
 			speed = 5.0f;//+= 0.2f;
 			life += 1.0f * Time.deltaTime;
-			procColor = color * (remainingLife() / maxLife);
 		}
 		else if(propagating)
 		{
@@ -74,11 +72,6 @@ public class EchoWave// : MonoBehaviour
 		life = newLife;
 	}
 
-	public Color getProcColor()
-	{
-		return procColor;
-	}
-
 	public bool getPropagating()
 	{
 		return propagating;
@@ -87,5 +80,10 @@ public class EchoWave// : MonoBehaviour
 	public void setPropagating(bool newPropagating)
 	{
 		propagating = newPropagating;
+	}
+
+	public Color getColor()
+	{
+		return color;
 	}
 }
