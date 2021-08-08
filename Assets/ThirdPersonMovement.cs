@@ -48,7 +48,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
 		if(isGrounded)
 		{
-			velocity.y = -2.0f;
+			velocity.y = -5.0f;
 		}
 
 		animator.SetBool("isMoving", isMoving);
