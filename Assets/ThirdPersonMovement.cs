@@ -5,6 +5,7 @@ using UnityEngine;
 public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
+	public Animator animator;
 	public Transform cam;
     public float speed = 6.0f;
 	public float gravity = -10.0f;
@@ -15,6 +16,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
 	private float turnSmoothVelocity;
 	private bool isGrounded = false;
+	private bool isMoving;
 	private Vector3 velocity = Vector3.zero;
 
 	// Start is called before the first frame update
@@ -30,7 +32,7 @@ public class ThirdPersonMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0.0f, vertical).normalized;
 
-        if (direction.magnitude >= 0.1f)
+        if ((isMoving = direction.magnitude >= 0.1f) && !animator.GetCurrentAnimatorStateInfo(0).IsName("Stomp"))
         {
 			float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
 			float angle = Mathf.SmoothDampAngle(transform.rotation.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -46,9 +48,17 @@ public class ThirdPersonMovement : MonoBehaviour
 
 		if(isGrounded)
 		{
-			velocity.y = -2.0f;
+			velocity.y = -5.0f;
 		}
+
+		animator.SetBool("isMoving", isMoving);
+		if (Input.GetButtonDown("Fire1")) animator.SetTrigger("stomp");
 
 		controller.Move(velocity * Time.deltaTime);
     }
+
+	public bool getIsMoving()
+	{
+		return isMoving;
+	}
 }
