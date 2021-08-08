@@ -50,8 +50,12 @@ public class EchoWaveManager : MonoBehaviour
 		if (engine > 1.0f) engine = -engine;
 
 		UpdateArray();
-		echoMaterials[0].SetInt("_WaveCount", echoWaves.Count);
-		if(echoWaves.Count > 0) echoMaterials[0].SetVectorArray("_WaveOrigin", waveSource);
+
+		for (int i = 0; i < echoMaterials.Length; i++)
+		{
+			echoMaterials[i].SetInt("_WaveCount", echoWaves.Count);
+			if (echoWaves.Count > 0) echoMaterials[i].SetVectorArray("_WaveOrigin", waveSource);
+		}
 
 		for(int i=0; i<echoWaves.Count; i++)
 		{
@@ -166,6 +170,15 @@ public class EchoWaveManager : MonoBehaviour
 		echoMaterials[0].SetFloatArray("_WaveRadius", waveRadius);
 		echoMaterials[0].SetFloatArray("_WaveLife", waveLife);
 		echoMaterials[0].SetColorArray("_WaveColor", waveColor);
+		
+		for (int j = 0; j < responderWaveIndex.Count; j++) waveLife[responderWaveIndex[j]] = 0.0f;
+		
+		for (int i = 1; i < echoMaterials.Length; i++)
+		{
+			echoMaterials[i].SetFloatArray("_WaveRadius", waveRadius);
+			echoMaterials[i].SetFloatArray("_WaveLife", waveLife);
+			echoMaterials[i].SetColorArray("_WaveColor", waveColor);
+		}
 	}
 
 	private void UpdateArray()
@@ -185,10 +198,11 @@ public class EchoWaveManager : MonoBehaviour
 		{
 			if(walkTimer % 30 == 0)
 			{*/
-				CreateWave(0.75f, 1.0f);
-				callerWaveIndex.Add(echoWaves.Count - 1);
-				callerWaveChild.Add(new List<int>());
-				echoWaves[echoWaves.Count - 1].setPropagating(true);
+		CreateWave(0.75f, 1.0f);
+		callerWaveIndex.Add(echoWaves.Count - 1);
+		callerWaveChild.Add(new List<int>());
+		echoWaves[echoWaves.Count - 1].color = new Color(0.25f, 0.25f, 0.5f, 1.0f);
+		echoWaves[echoWaves.Count - 1].setPropagating(true);
 			/*}
 			walkTimer++;
 		}*/
