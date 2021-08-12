@@ -13,7 +13,6 @@ public class EchoWaveManager : MonoBehaviour
 	private List<int> callerWaveIndex = new List<int>();
 	private List<int> responderWaveIndex = new List<int>();
 	private List<List<int>> callerWaveChild = new List<List<int>>();
-	//private List<List<int>> responderWaveParent = new List<List<int>>();
 
 	private Vector4[] waveSource = new Vector4[32];
 	private float[] waveRadius = new float[32];
@@ -23,7 +22,7 @@ public class EchoWaveManager : MonoBehaviour
 	private uint walkTimer;
 
 	private float engine = 0.0f;
-    // Start is called before the first frame update
+
     void Start()
     {
 		walkTimer = 0;
@@ -33,14 +32,8 @@ public class EchoWaveManager : MonoBehaviour
 			waveSource[i] = new Vector4();
 			waveColor[i] = new Color();
 		}
-
-		/*for(int i=0; i<responders.Length; i++)
-		{
-			responderWaveParent.Add(new List<int>());
-		}*/
 	}
 
-    // Update is called once per frame
     void Update()
 	{
 		/* The terrain needs a property visible by the inspector to be updated in the script
@@ -62,38 +55,29 @@ public class EchoWaveManager : MonoBehaviour
 			echoWaves[i].expand();
 		}
 
-		/*if (Input.GetButtonDown("Fire1"))
-		{
-			CreateWave(2.0f, 5.0f);
-			callerWaveIndex.Add(echoWaves.Count - 1);
-			callerWaveChild.Add(new List<int>());
-			echoWaves[echoWaves.Count - 1].setPropagating(true);
-		}*/
-
 		for (int i=0; i<responders.Length; i++)
 		{
 			for (int j = 0; j < callerWaveIndex.Count; j++)
 			{
 				if (Vector3.Distance(responders[i].position, echoWaves[callerWaveIndex[j]].source.position) < echoWaves[callerWaveIndex[j]].getRadius() && !callerWaveChild[j].Exists(x => x==i))
 				{
+					Color color = new Color(0.5f, 1.0f, 1.0f, 1.0f);
+
+					if (responders[i].CompareTag("Enemy"))
+					{
+						color = new Color(1.0f, 0.2f, 0.2f, 1.0f);
+					}
+
 					CreateWave(echoWaves[callerWaveIndex[j]].maxLife, echoWaves[callerWaveIndex[j]].getSpeed());
 					responderWaveIndex.Add(echoWaves.Count - 1);
 					callerWaveChild[j].Add(i);
-					//responderWaveParent[i].Add(callerWaveIndex[j]);
 					echoWaves[echoWaves.Count - 1].setLife(echoWaves[callerWaveIndex[j]].getLife());
 					echoWaves[echoWaves.Count - 1].source = responders[i];
-					echoWaves[echoWaves.Count - 1].color = new Color(0.5f, 1.0f, 1.0f, 1.0f);
+					echoWaves[echoWaves.Count - 1].color = color;
 					echoWaves[echoWaves.Count - 1].setPropagating(true);
-					Debug.Log("************************");
-					Debug.Log("(i, j): "+"("+i+", "+j+")");
-					Debug.Log("callerWaveIndex[j]: "+callerWaveIndex[j]);
-					//Debug.Log("responderWaveParent[i].Count: "+ responderWaveParent[i].Count);
 				}
 			}
 		}
-		Debug.Log("callerWaveIndex.Count: " + callerWaveIndex.Count);
-		Debug.Log("responderWaveIndex.Count: " + responderWaveIndex.Count);
-		Debug.Log("Current wave count: " + echoWaves.Count.ToString());
 
 		if (callerWaveIndex.Count + responderWaveIndex.Count != echoWaves.Count) Debug.Log("*!*!*!*!* Callers and responders do not match total number of waves! *!*!*!*!*");
 
@@ -133,18 +117,8 @@ public class EchoWaveManager : MonoBehaviour
 
 		callerWaveIndex.RemoveAll(x => x == index);
 		responderWaveIndex.RemoveAll(x => x == index);
-		/*for (int j = 0; j < responders.Length; j++)
-		{
-				responderWaveParent[j].RemoveAll(x => x == index);
-		}*/
 		for (int i = 0; i < callerWaveIndex.Count; i++)
 		{
-			/*if (callerWaveIndex[i] == index)
-			{
-				callerWaveIndex.RemoveAt(i);
-				i--;
-			}
-			else*/
 			if (callerWaveIndex[i] > index)
 			{
 				callerWaveIndex[i]--;
@@ -152,12 +126,6 @@ public class EchoWaveManager : MonoBehaviour
 		}
 		for (int i = 0; i < responderWaveIndex.Count; i++)
 		{
-			/*if (responderWaveIndex[i] == index)
-			{
-				responderWaveIndex.RemoveAt(i);
-				i--;
-			}
-			else*/
 			if (responderWaveIndex[i] > index)
 			{
 				responderWaveIndex[i]--;
@@ -194,18 +162,11 @@ public class EchoWaveManager : MonoBehaviour
 
 	public void DoWalk()
 	{
-		/*if(movementController.getIsMoving())
-		{
-			if(walkTimer % 30 == 0)
-			{*/
 		CreateWave(0.75f, 1.0f);
 		callerWaveIndex.Add(echoWaves.Count - 1);
 		callerWaveChild.Add(new List<int>());
 		echoWaves[echoWaves.Count - 1].color = new Color(0.25f, 0.25f, 0.5f, 1.0f);
 		echoWaves[echoWaves.Count - 1].setPropagating(true);
-			/*}
-			walkTimer++;
-		}*/
 	}
 
 	public void DoStomp()
