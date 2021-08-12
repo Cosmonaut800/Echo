@@ -19,14 +19,10 @@ public class EchoWaveManager : MonoBehaviour
 	private float[] waveLife = new float[32];
 	private Color[] waveColor = new Color[32];
 
-	private uint walkTimer;
-
 	private float engine = 0.0f;
 
     void Start()
     {
-		walkTimer = 0;
-
 		for(int i=0; i<32; i++)
 		{
 			waveSource[i] = new Vector4();
