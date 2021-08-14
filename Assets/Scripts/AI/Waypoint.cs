@@ -20,7 +20,10 @@ public class Waypoint : MonoBehaviour
 
 	private void OnDrawGizmos()
 	{
-		Gizmos.color = Color.cyan;
+		Vector3 ray = nextTarget.position - transform.position;
+		ray.Normalize();
+		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere(transform.position, 0.5f);
+		Gizmos.DrawRay(transform.position, ray);
 	}
 }
