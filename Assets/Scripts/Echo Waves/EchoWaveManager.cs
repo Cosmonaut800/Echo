@@ -6,7 +6,6 @@ public class EchoWaveManager : MonoBehaviour
 {
 	public Transform caller;
 	public Transform[] responders;
-	public ThirdPersonMovement movementController;
 	public Material[] echoMaterials;
 
 	private List<EchoWave> echoWaves = new List<EchoWave>();
@@ -61,6 +60,7 @@ public class EchoWaveManager : MonoBehaviour
 
 					if (responders[i].CompareTag("Enemy"))
 					{
+						responders[i].GetComponent<EnemyController>().Detected(caller.position);
 						color = new Color(1.0f, 0.2f, 0.2f, 1.0f);
 					}
 
@@ -165,11 +165,29 @@ public class EchoWaveManager : MonoBehaviour
 		echoWaves[echoWaves.Count - 1].setPropagating(true);
 	}
 
+	public void DoEnemyWalk(Transform position)
+	{
+		CreateWave(0.75f, 1.0f);
+		responderWaveIndex.Add(echoWaves.Count - 1);
+		echoWaves[echoWaves.Count - 1].source = position;
+		echoWaves[echoWaves.Count - 1].color = new Color(0.3f, 0.06f, 0.06f, 1.0f);
+		echoWaves[echoWaves.Count - 1].setPropagating(true);
+	}
+
 	public void DoStomp()
 	{
 		CreateWave(2.0f, 5.0f);
 		callerWaveIndex.Add(echoWaves.Count - 1);
 		callerWaveChild.Add(new List<int>());
+		echoWaves[echoWaves.Count - 1].setPropagating(true);
+	}
+
+	public void DoEnemyStomp(Transform position)
+	{
+		CreateWave(2.0f, 5.0f);
+		responderWaveIndex.Add(echoWaves.Count - 1);
+		echoWaves[echoWaves.Count - 1].source = position;
+		echoWaves[echoWaves.Count - 1].color = new Color(1.0f, 0.2f, 0.2f, 1.0f);
 		echoWaves[echoWaves.Count - 1].setPropagating(true);
 	}
 }
