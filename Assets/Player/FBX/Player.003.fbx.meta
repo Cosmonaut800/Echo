@@ -15,6 +15,15 @@ ModelImporter:
   - first:
       74: -8006300898129053907
     second: Armature|Player.Run
+  - first:
+      74: 788657015890796541
+    second: Armature|Player.Damage.Light
+  - first:
+      74: 1883668999326424460
+    second: Armature|Player.Default
+  - first:
+      74: 4121099143320077450
+    second: Armature|Player.Loot
   externalObjects: {}
   materials:
     materialImportMode: 2
