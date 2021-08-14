@@ -52,30 +52,33 @@ public class EchoWaveManager : MonoBehaviour
 
 		for (int i=0; i<responders.Length; i++)
 		{
-			for (int j = 0; j < callerWaveIndex.Count; j++)
+			if (responders[i].gameObject.activeSelf)
 			{
-				if (Vector3.Distance(responders[i].position, echoWaves[callerWaveIndex[j]].source.position) < echoWaves[callerWaveIndex[j]].getRadius() && !callerWaveChild[j].Exists(x => x==i))
+				for (int j = 0; j < callerWaveIndex.Count; j++)
 				{
-					Color color = new Color(0.5f, 1.0f, 1.0f, 1.0f);
-
-					if (responders[i].CompareTag("Enemy"))
+					if (Vector3.Distance(responders[i].position, echoWaves[callerWaveIndex[j]].source.position) < echoWaves[callerWaveIndex[j]].getRadius() && !callerWaveChild[j].Exists(x => x == i))
 					{
-						responders[i].GetComponent<EnemyController>().Detected(caller.position);
-						color = new Color(1.0f, 0.2f, 0.2f, 1.0f);
-					}
+						Color color = new Color(0.5f, 1.0f, 1.0f, 1.0f);
 
-					CreateWave(echoWaves[callerWaveIndex[j]].maxLife, echoWaves[callerWaveIndex[j]].getSpeed());
-					responderWaveIndex.Add(echoWaves.Count - 1);
-					callerWaveChild[j].Add(i);
-					echoWaves[echoWaves.Count - 1].setLife(echoWaves[callerWaveIndex[j]].getLife());
-					echoWaves[echoWaves.Count - 1].source = responders[i];
-					echoWaves[echoWaves.Count - 1].color = color;
-					echoWaves[echoWaves.Count - 1].setPropagating(true);
+						if (responders[i].CompareTag("Enemy"))
+						{
+							responders[i].GetComponent<EnemyController>().Detected(caller.position);
+							color = new Color(1.0f, 0.2f, 0.2f, 1.0f);
+						}
+
+						CreateWave(echoWaves[callerWaveIndex[j]].maxLife, echoWaves[callerWaveIndex[j]].getSpeed());
+						responderWaveIndex.Add(echoWaves.Count - 1);
+						callerWaveChild[j].Add(i);
+						echoWaves[echoWaves.Count - 1].setLife(echoWaves[callerWaveIndex[j]].getLife());
+						echoWaves[echoWaves.Count - 1].source = responders[i];
+						echoWaves[echoWaves.Count - 1].color = color;
+						echoWaves[echoWaves.Count - 1].setPropagating(true);
+					}
 				}
 			}
 		}
 
-		if (callerWaveIndex.Count + responderWaveIndex.Count != echoWaves.Count) Debug.Log("*!*!*!*!* Callers and responders do not match total number of waves! *!*!*!*!*");
+			if (callerWaveIndex.Count + responderWaveIndex.Count != echoWaves.Count) Debug.Log("*!*!*!*!* Callers and responders do not match total number of waves! *!*!*!*!*");
 
 		UpdateArray();
 		if (echoWaves.Count > 0) Draw();

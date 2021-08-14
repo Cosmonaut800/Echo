@@ -39,7 +39,6 @@ public class IdleState : State
 		velocity = target - transform.position;
 		velocity.Normalize();
 		velocity *= speed * Time.deltaTime;
-		velocity.y = -5.0f;
 
 		controller.Move(velocity);
 

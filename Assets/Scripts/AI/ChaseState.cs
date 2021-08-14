@@ -7,7 +7,7 @@ public class ChaseState : State
 	public AttackState attackState;
 	public CharacterController controller;
 	public Vector3 target = Vector3.zero;
-	public float speed = 20.0f;
+	public float speed = 30.0f;
 
 	private bool isInRange = false;
 
@@ -22,7 +22,6 @@ public class ChaseState : State
 
 		if (isInRange)
 		{
-			Debug.Log("Sent to attack");
 			return attackState;
 		}
 		else
