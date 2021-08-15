@@ -5,6 +5,7 @@ using UnityEngine;
 public class EventRedirect : MonoBehaviour
 {
 	public EchoWaveManager echoWaveManager;
+	public Pickup pickup;
 
     public void DoStomp()
 	{
@@ -14,5 +15,15 @@ public class EventRedirect : MonoBehaviour
 	public void DoWalk()
 	{
 		echoWaveManager.DoWalk();
+	}
+
+	public void IncrementItems()
+	{
+		pickup.Increment();
+	}
+
+	public void DecrementItems()
+	{
+		pickup.Decrement();
 	}
 }

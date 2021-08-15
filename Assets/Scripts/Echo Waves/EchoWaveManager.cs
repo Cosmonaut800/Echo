@@ -161,7 +161,7 @@ public class EchoWaveManager : MonoBehaviour
 
 	public void DoWalk()
 	{
-		CreateWave(0.75f, 1.0f);
+		CreateWave(1.0f, 1.0f);
 		callerWaveIndex.Add(echoWaves.Count - 1);
 		callerWaveChild.Add(new List<int>());
 		echoWaves[echoWaves.Count - 1].color = new Color(0.25f, 0.25f, 0.5f, 1.0f);
