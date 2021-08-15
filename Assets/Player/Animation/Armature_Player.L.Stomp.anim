@@ -25726,7 +25726,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.9583333
+    m_StopTime: 0.9583334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -130685,6 +130685,13 @@ AnimationClip:
   m_Events:
   - time: 0.5416667
     functionName: DoStomp
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5416667
+    functionName: PlayStomp
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

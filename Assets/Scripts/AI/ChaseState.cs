@@ -8,6 +8,7 @@ public class ChaseState : State
 	public CharacterController controller;
 	public Vector3 target = Vector3.zero;
 	public float speed = 60.0f;
+	public AudioSource chaseSound;
 
 	private bool isInRange = false;
 	private EnemyController enemyController;
@@ -19,6 +20,10 @@ public class ChaseState : State
 	}
 	public override State RunCurrentState()
 	{
+		if(!chaseSound.isPlaying)
+		{
+			chaseSound.Play();
+		}
 		Vector3 velocity = target - transform.position;
 		velocity.Normalize();
 		enemyController.SetDirection(velocity);
@@ -37,6 +42,7 @@ public class ChaseState : State
 
 		if (isInRange)
 		{
+			chaseSound.Stop();
 			enemyController.SetIsSearching(true);
 			enemyController.TriggerAttack();
 			return attackState;

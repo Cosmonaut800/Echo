@@ -7,6 +7,7 @@ public class EnemyRedirect : MonoBehaviour
 	public EnemyController enemyController;
 	public ThirdPersonMovement playerController;
 	public Pickup pickup;
+	public AudioSource attackSound;
 
 	public void AttackEnded()
 	{
@@ -37,5 +38,10 @@ public class EnemyRedirect : MonoBehaviour
 	public void DecrementItems()
 	{
 		pickup.Decrement();
+	}
+
+	public void AttackSound()
+	{
+		attackSound.Play();
 	}
 }
