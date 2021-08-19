@@ -7,12 +7,6 @@
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
 		_Engine ("Engine", float) = 0.0
-		/*_WaveOrigin("Wave Origin", Vector) = (0,0,0,0)
-		_WaveRadius("Wave Radius", Float) = 0
-		_WaveThickness("Wave Thickness", Float) = 0.1
-		_ResponseOrigin("Response Origin", Vector) = (0,0,0,0)
-		_ResponseRadius("Response Radius", Float) = 0
-		_ResponseThickness("Response Thickness", Float) = 0.1*/
     }
     SubShader
     {

@@ -32,7 +32,7 @@ public class ThirdPersonMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0.0f, vertical).normalized;
 
-        if ((isMoving = direction.magnitude >= 0.1f) && !animator.GetCurrentAnimatorStateInfo(0).IsName("Stomp"))
+        if ((isMoving = direction.magnitude >= 0.1f) && CheckMoveCondition())
         {
 			float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
 			float angle = Mathf.SmoothDampAngle(transform.rotation.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -60,5 +60,18 @@ public class ThirdPersonMovement : MonoBehaviour
 	public bool getIsMoving()
 	{
 		return isMoving;
+	}
+
+	public void DoDamage(Vector3 position)
+	{
+		if (Vector3.Distance(transform.position, position) < 10.0f)
+		{
+			animator.SetTrigger("damage");
+		}
+	}
+
+	public bool CheckMoveCondition()
+	{
+		return !animator.GetCurrentAnimatorStateInfo(0).IsName("Stomp") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Loot");
 	}
 }
