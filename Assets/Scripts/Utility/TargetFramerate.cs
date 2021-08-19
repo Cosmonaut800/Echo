@@ -16,5 +16,10 @@ public class TargetFramerate : MonoBehaviour
 	void Update()
     {
 		if (Application.targetFrameRate != target) Application.targetFrameRate = target;
+
+		if(Input.GetKeyUp(KeyCode.Escape))
+		{
+			Application.Quit();
+		}
 	}
 }

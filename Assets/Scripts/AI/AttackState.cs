@@ -7,12 +7,34 @@ public class AttackState : State
 	public IdleState idleState;
 	public EchoWaveManager echoManager;
 
+	private EnemyController enemyController;
+	private bool inAnimation = false;
+
+	public void Start()
+	{
+		enemyController = transform.parent.parent.GetComponent<EnemyController>();
+	}
 	public override State RunCurrentState()
 	{
-		echoManager.DoEnemyStomp(transform);
+		inAnimation = enemyController.GetInAttack();
+		enemyController.SetGFXPosition(transform.position - (1.9f * Vector3.up));
 
-		idleState.SetDetectPlayer(false);
-		idleState.home.position = transform.position + (0.1f * Vector3.forward);
-		return idleState;
+		if(enemyController.IsInAnimation("Armature_Snake_Emerge"))
+		{
+			enemyController.TriggerAttack();
+		}
+
+		if (enemyController.GetInAttack())
+		{
+			enemyController.SetIsSearching(false);
+			enemyController.SetIsIdle(true);
+			idleState.SetDetectPlayer(false);
+			idleState.home.position = transform.position + (0.1f * Vector3.forward);
+			return idleState;
+		}
+		else
+		{
+			return this;
+		}
 	}
 }

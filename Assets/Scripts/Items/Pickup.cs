@@ -7,7 +7,7 @@ public class Pickup : MonoBehaviour
 {
 	public Text displayText;
 
-	private int itemCount = 0;
+	private int itemCount = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -24,5 +24,17 @@ public class Pickup : MonoBehaviour
 	public void Increment()
 	{
 		itemCount++;
+	}
+
+	public void Decrement()
+	{
+		itemCount--;
+		if (itemCount < 0) itemCount = 0;
+	}
+
+	public void Decrement(int amount)
+	{
+		itemCount -= amount;
+		if (itemCount < 0) itemCount = 0;
 	}
 }

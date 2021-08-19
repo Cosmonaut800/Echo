@@ -8,17 +8,24 @@ public class IdleState : State
 	public CharacterController controller;
 	public float speed = 5.0f;
 	public Transform home;
-
 	public Transform targetedPosition;
 
 	private bool detectPlayer = false;
-	private int walkFrame = 0;
+	private float walkTimer = 0.0f;
 	private bool atHome = false;
+	private EnemyController enemyController;
+
+	public void Start()
+	{
+		enemyController = transform.parent.parent.GetComponent<EnemyController>();
+	}
 
 	public override State RunCurrentState()
 	{
 		Vector3 target = home.position;
 		Vector3 velocity;
+
+		enemyController.SetGFXPosition(transform.position - (64.0f * Vector3.up));
 
 		if(atHome)
 		{
@@ -38,12 +45,21 @@ public class IdleState : State
 
 		velocity = target - transform.position;
 		velocity.Normalize();
+		enemyController.SetDirection(velocity);
 		velocity *= speed * Time.deltaTime;
 
 		controller.Move(velocity);
 
+		walkTimer += Time.deltaTime;
+		if(walkTimer > 1.0f)
+		{
+			enemyController.DoEnemyWalk();
+			walkTimer = 0.0f;
+		}
+
 		if (detectPlayer)
 		{
+			enemyController.SetIsIdle(false);
 			return chaseState;
 		}
 		else

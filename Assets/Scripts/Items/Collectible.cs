@@ -5,14 +5,15 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
 	private Transform player;
-
 	private Pickup pickup;
+	private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
 		player = GameObject.FindWithTag("Player").transform;
 		pickup = player.GetComponent<Pickup>();
+		animator = player.Find("Graphics").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -20,7 +21,7 @@ public class Collectible : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, player.position) < 5.0f && Input.GetButtonDown("Fire2"))
 		{
-			pickup.Increment();
+			animator.SetTrigger("loot");
 			transform.gameObject.SetActive(false);
 		}
     }
