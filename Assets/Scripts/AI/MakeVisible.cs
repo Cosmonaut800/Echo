@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MakeVisible : MonoBehaviour
 {
-	public IdleState follow;
+	public SnakeIdleState follow;
 
     // Update is called once per frame
     void Update()

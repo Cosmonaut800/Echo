@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChaseState : State
+public class SnakeChaseState : State
 {
-	public AttackState attackState;
+	public SnakeAttackState attackState;
 	public CharacterController controller;
 	public Vector3 target = Vector3.zero;
 	public float speed = 60.0f;
 	public AudioSource chaseSound;
 
 	private bool isInRange = false;
-	private EnemyController enemyController;
+	private SnakeEnemyController enemyController;
 	private float walkTimer = 0.0f;
 
 	public void Start()
 	{
-		enemyController = transform.parent.parent.GetComponent<EnemyController>();
+		enemyController = transform.parent.parent.GetComponent<SnakeEnemyController>();
 	}
 	public override State RunCurrentState()
 	{
