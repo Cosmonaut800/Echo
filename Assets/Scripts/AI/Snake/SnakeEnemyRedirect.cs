@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRedirect : MonoBehaviour
+public class SnakeEnemyRedirect : MonoBehaviour
 {
-	public EnemyController enemyController;
+	public SnakeEnemyController enemyController;
 	public ThirdPersonMovement playerController;
 	public Pickup pickup;
 	public AudioSource attackSound;

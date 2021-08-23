@@ -55,6 +55,9 @@
 				fixed4 e = c * _WaveColor[i];
 				e *= _WaveLife[i];
 				o.Emission += max(e.rgb * (dist < _WaveRadius[i]) * pow(dist / _WaveRadius[i], 2.0f), 0.0f);
+				//o.Emission += lerp(0.0f, 0.2f * _WaveLife[i], (dist < _WaveRadius[i]) * pow(dist / _WaveRadius[i], 8.0f));
+				//o.Emission += max(lerp(float3(0.0f, 0.0f, 0.0f), e.rgb, (dist < _WaveRadius[i]) * pow(dist / _WaveRadius[i], 1.0f)), 0.0f);
+				//o.Emission = clamp(o.Emission, 0.0f, 1.0f);
 			}
 
             o.Albedo = c.rgb;

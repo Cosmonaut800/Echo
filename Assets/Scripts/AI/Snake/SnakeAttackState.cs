@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackState : State
+public class SnakeAttackState : State
 {
-	public IdleState idleState;
+	public SnakeIdleState idleState;
 	public EchoWaveManager echoManager;
 
-	private EnemyController enemyController;
+	private SnakeEnemyController enemyController;
 	private bool inAnimation = false;
 
 	public void Start()
 	{
-		enemyController = transform.parent.parent.GetComponent<EnemyController>();
+		enemyController = transform.parent.parent.GetComponent<SnakeEnemyController>();
 	}
 	public override State RunCurrentState()
 	{

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : State
+public class SnakeIdleState : State
 {
-	public ChaseState chaseState;
+	public SnakeChaseState chaseState;
 	public CharacterController controller;
 	public float speed = 5.0f;
 	public Transform home;
@@ -13,11 +13,11 @@ public class IdleState : State
 	private bool detectPlayer = false;
 	private float walkTimer = 0.0f;
 	private bool atHome = false;
-	private EnemyController enemyController;
+	private SnakeEnemyController enemyController;
 
 	public void Start()
 	{
-		enemyController = transform.parent.parent.GetComponent<EnemyController>();
+		enemyController = transform.parent.parent.GetComponent<SnakeEnemyController>();
 	}
 
 	public override State RunCurrentState()
