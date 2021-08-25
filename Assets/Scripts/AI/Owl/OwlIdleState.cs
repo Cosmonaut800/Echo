@@ -5,6 +5,7 @@ using UnityEngine;
 public class OwlIdleState : State
 {
 	public OwlAttackState attackState;
+	public Transform home;
 
 	private bool detectPlayer = false;
 
@@ -13,6 +14,8 @@ public class OwlIdleState : State
 
 		if(detectPlayer)
 		{
+			attackState.reachedPlayer = false;
+			detectPlayer = false;
 			return attackState;
 		}
 		else

@@ -31,7 +31,6 @@ public class SnakeEnemyRedirect : MonoBehaviour
 
 	public void DoDamage()
 	{
-		Debug.Log("DoDamage()");
 		playerController.DoDamage(transform.position);
 	}
 
