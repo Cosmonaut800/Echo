@@ -19,10 +19,16 @@ public class Collectible : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector3.Distance(transform.position, player.position) < 5.0f && Input.GetButtonDown("Fire2"))
+        if(Vector3.Distance(transform.position, player.position) < 3.0f && Input.GetButtonDown("Fire2"))
 		{
 			animator.SetTrigger("loot");
 			transform.gameObject.SetActive(false);
 		}
     }
+
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.green;
+		Gizmos.DrawWireSphere(transform.position, 3.0f);
+	}
 }
