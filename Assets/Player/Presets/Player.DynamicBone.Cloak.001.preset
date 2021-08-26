@@ -6,7 +6,7 @@ Preset:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DynamicBone_Cloth.001
+  m_Name: Player.DynamicBone.Cloak.001
   m_TargetType:
     m_NativeTypeID: 114
     m_ManagedTypePPtr: {fileID: 11500000, guid: f9ac8d30c6a0d9642a11e5be4c440740, type: 3}
@@ -38,7 +38,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Damping
-    value: 0.02
+    value: 0.08
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_DampingDistrib.m_Curve.Array.size
@@ -58,7 +58,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Elasticity
-    value: 0.001
+    value: 0.002
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_ElasticityDistrib.m_Curve.Array.size
@@ -78,7 +78,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Stiffness
-    value: 0
+    value: 0.7
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_StiffnessDistrib.m_Curve.Array.size
@@ -98,7 +98,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Inert
-    value: 0
+    value: 0.7
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_InertDistrib.m_Curve.Array.size
