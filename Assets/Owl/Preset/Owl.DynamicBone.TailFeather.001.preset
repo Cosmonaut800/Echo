@@ -6,7 +6,7 @@ Preset:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Owl.DynamicBone.TailFeather
+  m_Name: Owl.DynamicBone.TailFeather.001
   m_TargetType:
     m_NativeTypeID: 114
     m_ManagedTypePPtr: {fileID: 11500000, guid: f9ac8d30c6a0d9642a11e5be4c440740, type: 3}
