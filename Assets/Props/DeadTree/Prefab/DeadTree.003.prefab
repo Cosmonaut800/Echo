@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8974588944153387796}
   - component: {fileID: 4914222501233456108}
   m_Layer: 0
-  m_Name: Prop.DeadTree.003
+  m_Name: DeadTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

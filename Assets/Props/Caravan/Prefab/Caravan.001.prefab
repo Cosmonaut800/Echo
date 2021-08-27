@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8236373561499842621}
   m_Layer: 0
-  m_Name: Caravan.001.001
+  m_Name: Caravan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
