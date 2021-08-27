@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7020337236359433155
+--- !u!1 &8442234442381116127
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1463918112044719861}
-  - component: {fileID: 8774175217035343701}
-  - component: {fileID: 1067076455880355832}
+  - component: {fileID: 5921137355167721}
+  - component: {fileID: 7890809183425691209}
+  - component: {fileID: 1912601131448100580}
   m_Layer: 0
   m_Name: Barrel.Board.006
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1463918112044719861
+--- !u!4 &5921137355167721
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7020337236359433155}
+  m_GameObject: {fileID: 8442234442381116127}
   m_LocalRotation: {x: 0.5, y: 0.49999997, z: 0.5, w: -0.5}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,21 +32,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8774175217035343701
+--- !u!33 &7890809183425691209
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7020337236359433155}
+  m_GameObject: {fileID: 8442234442381116127}
   m_Mesh: {fileID: -2755781720280635700, guid: a8a57a3f2b8a6b24797b8a2ff174d1a0, type: 3}
---- !u!23 &1067076455880355832
+--- !u!23 &1912601131448100580
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7020337236359433155}
+  m_GameObject: {fileID: 8442234442381116127}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
