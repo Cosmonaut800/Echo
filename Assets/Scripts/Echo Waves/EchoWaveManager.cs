@@ -8,6 +8,9 @@ public class EchoWaveManager : MonoBehaviour
 	public Transform[] responders;
 	public Material[] echoMaterials;
 
+	[HideInInspector]
+	public float lifeMultiplier = 1.0f;
+
 	private List<EchoWave> echoWaves = new List<EchoWave>();
 	private List<int> callerWaveIndex = new List<int>();
 	private List<int> responderWaveIndex = new List<int>();
@@ -101,7 +104,7 @@ public class EchoWaveManager : MonoBehaviour
 			DestroyWave(0);
 			Debug.Log("New wave count: " + echoWaves.Count);
 		}
-		echoWaves[echoWaves.Count - 1].maxLife = maxLife;
+		echoWaves[echoWaves.Count - 1].maxLife = maxLife * lifeMultiplier;
 		echoWaves[echoWaves.Count - 1].setLife(0.0f);
 		echoWaves[echoWaves.Count - 1].setSpeed(speed);
 		echoWaves[echoWaves.Count - 1].source = caller;

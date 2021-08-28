@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Wind : MonoBehaviour
 {
-	private Collider player;
+	public EchoWaveManager echoManager;
+	public Animator animator;
 	public BoxCollider wind;
+	private Collider player;
 
 	private void Start()
 	{
@@ -17,7 +19,16 @@ public class Wind : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		//echoManager.lifeMultiplier = 0.15f;
+		animator.SetBool("InWind", true);
 		Debug.Log("Entered wind box.");
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		//echoManager.lifeMultiplier = 1.0f;
+		animator.SetBool("InWind", false);
+		Debug.Log("Exited wind box.");
 	}
 
 	private void OnDrawGizmos()
