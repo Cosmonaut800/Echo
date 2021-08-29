@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class OwlEnemyRedirect : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public OwlEnemyController enemyController;
+	public ThirdPersonMovement playerController;
+	public Pickup pickup;
+	public AudioSource flap;
+	public AudioSource attackSound;
+	public CapsuleCollider hurtBox;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public void PlayFlap()
+	{
+		flap.Play();
+	}
+
+	public void PlayAttack()
+	{
+		attackSound.Play();
+	}
+
+	public void DoEnemyStomp()
+	{
+		enemyController.DoEnemyStomp();
+	}
+
+	public void DecrementItems()
+	{
+		pickup.Decrement();
+	}
+
+	public void DoDamage()
+	{
+		//playerController.DoDamage(transform.position, 7.0f);
+	}
 }
