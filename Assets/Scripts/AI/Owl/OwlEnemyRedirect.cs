@@ -6,6 +6,7 @@ public class OwlEnemyRedirect : MonoBehaviour
 {
 	public OwlEnemyController enemyController;
 	public ThirdPersonMovement playerController;
+	public HealthManager healthManager;
 	public Pickup pickup;
 	public AudioSource flap;
 	public AudioSource attackSound;
@@ -33,6 +34,7 @@ public class OwlEnemyRedirect : MonoBehaviour
 
 	public void DoDamage()
 	{
+		healthManager.DealDamage(6.0f);
 		//playerController.DoDamage(transform.position, 7.0f);
 	}
 }

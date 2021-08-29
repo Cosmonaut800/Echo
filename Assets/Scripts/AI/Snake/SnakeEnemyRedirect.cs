@@ -6,6 +6,7 @@ public class SnakeEnemyRedirect : MonoBehaviour
 {
 	public SnakeEnemyController enemyController;
 	public ThirdPersonMovement playerController;
+	public HealthManager healthManager;
 	public Pickup pickup;
 	public AudioSource attackSound;
 
@@ -31,6 +32,7 @@ public class SnakeEnemyRedirect : MonoBehaviour
 
 	public void DoDamage()
 	{
+		healthManager.DealDamage(5.0f);
 		playerController.DoDamage(transform.position, 30.0f);
 	}
 
