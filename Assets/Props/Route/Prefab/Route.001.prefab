@@ -128,6 +128,20 @@ Transform:
   m_Father: {fileID: 1388995918457388921}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -22.578, y: -86.655, z: 24.737}
+--- !u!64 &9074209590152790386
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7166005243066702588}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5145625137847651765, guid: 306407617b0386c418dfa9bf60fae6c8, type: 3}
 --- !u!1 &6055424924143172386
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1388995918457388921}
   m_Layer: 0
-  m_Name: Route
+  m_Name: Route.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1804,6 +1818,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f41c4bbc821afae438bb7ccf6c39a188, type: 3}
+--- !u!1 &7166005243066702588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3197941266399918467, guid: f41c4bbc821afae438bb7ccf6c39a188, type: 3}
+  m_PrefabInstance: {fileID: 5698071050530038655}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &529155284900033302 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5207412979682447465, guid: f41c4bbc821afae438bb7ccf6c39a188, type: 3}
