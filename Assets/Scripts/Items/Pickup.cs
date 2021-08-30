@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Pickup : MonoBehaviour
 {
-	public Text displayText;
+	public TextMeshProUGUI displayText;
 
 	private int itemCount = 10;
 

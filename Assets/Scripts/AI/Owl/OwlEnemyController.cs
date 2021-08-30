@@ -28,8 +28,12 @@ public class OwlEnemyController : EnemyController
 		if (closingDistance < 100.0f)
 		{
 			Color eyeColor = new Color(1.0f, 0.66f, 0.0f, 1.0f);
-			eyeMaterial.SetColor("_EmissionColor", Color.Lerp(Color.black, eyeColor, 1 - closingDistance/100.0f));
-		}	
+			eyeMaterial.SetColor("_EmissionColor", Color.Lerp(Color.black, eyeColor, 1 - closingDistance / 100.0f));
+		}
+		else
+		{
+			eyeMaterial.SetColor("_EmissionColor", Color.black);
+		}
 
 		velocity.Normalize();
 		transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(velocity), 5.0f);
@@ -52,7 +56,6 @@ public class OwlEnemyController : EnemyController
 
 	public void TriggerAttack()
 	{
-		Debug.Log("Triggered attack.");
 		animator.SetTrigger("Attack");
 	}
 
