@@ -8,7 +8,8 @@ public class Pickup : MonoBehaviour
 {
 	public TextMeshProUGUI displayText;
 
-	private int itemCount = 10;
+	[SerializeField]
+	private int itemCount = 3;
 
     // Start is called before the first frame update
     void Start()
