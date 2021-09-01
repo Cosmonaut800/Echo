@@ -8,13 +8,30 @@ public class OwlEnemyRedirect : MonoBehaviour
 	public ThirdPersonMovement playerController;
 	public HealthManager healthManager;
 	public Pickup pickup;
-	public AudioSource flap;
 	public AudioSource attackSound;
-	public CapsuleCollider hurtBox;
+	public AudioSource flap1;
+	public AudioSource flap2;
+	public AudioSource flap3;
 
     public void PlayFlap()
 	{
-		flap.Play();
+		int sound = Random.Range(1, 4);
+
+		if (sound <= 1)
+		{
+			//audioManager.Play("sandstep1");
+			flap1.Play();
+		}
+		else if (sound == 2)
+		{
+			//audioManager.Play("sandstep2");
+			flap2.Play();
+		}
+		else
+		{
+			//audioManager.Play("sandstep3");
+			flap3.Play();
+		}
 	}
 
 	public void PlayAttack()

@@ -72,6 +72,10 @@ public class EchoWaveManager : MonoBehaviour
 						{
 							color = new Color(1.0f, 0.2f, 1.0f, 1.0f);
 						}
+						else if (responders[i].CompareTag("NPC"))
+						{
+							color = new Color(0.5f, 0.5f, 1.0f, 1.0f);
+						}
 
 						CreateWave(echoWaves[callerWaveIndex[j]].maxLife/lifeMultiplier, echoWaves[callerWaveIndex[j]].getSpeed());
 						responderWaveIndex.Add(echoWaves.Count - 1);

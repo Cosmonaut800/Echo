@@ -21,7 +21,7 @@ public class Collectible : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (Vector3.Distance(transform.position, player.position) < 3.0f)
+		if (Vector3.Distance(transform.position, player.position) < 4.0f)
 		{
 			tutorial.TriggerDig();
 
@@ -36,6 +36,6 @@ public class Collectible : MonoBehaviour
 	private void OnDrawGizmos()
 	{
 		Gizmos.color = Color.green;
-		Gizmos.DrawWireSphere(transform.position, 3.0f);
+		Gizmos.DrawWireSphere(transform.position, 4.0f);
 	}
 }

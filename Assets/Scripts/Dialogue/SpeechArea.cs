@@ -11,6 +11,7 @@ public class SpeechArea : MonoBehaviour
 	private DialogueManager manager;
 	private bool dialogueStarted = false;
 	private EchoWaveManager echoManager;
+	private float talkTimer = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,14 @@ public class SpeechArea : MonoBehaviour
 		}
 
 		if (Input.GetButtonDown("Fire1")) manager.DisplayNextSentence();
+
+		talkTimer += Time.deltaTime;
+
+		if (talkTimer > 5.0f)
+		{
+			talkTimer = 0.0f;
+			echoManager.DoNPCWalk(transform);
+		}
     }
 
 	private void OnTriggerEnter(Collider other)
