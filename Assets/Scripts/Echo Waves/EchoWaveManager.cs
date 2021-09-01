@@ -8,6 +8,9 @@ public class EchoWaveManager : MonoBehaviour
 	public Transform[] responders;
 	public Material[] echoMaterials;
 
+	[HideInInspector]
+	public float lifeMultiplier = 1.0f;
+
 	private List<EchoWave> echoWaves = new List<EchoWave>();
 	private List<int> callerWaveIndex = new List<int>();
 	private List<int> responderWaveIndex = new List<int>();
@@ -56,7 +59,7 @@ public class EchoWaveManager : MonoBehaviour
 			{
 				for (int j = 0; j < callerWaveIndex.Count; j++)
 				{
-					if (Vector3.Distance(responders[i].position, echoWaves[callerWaveIndex[j]].source.position) < echoWaves[callerWaveIndex[j]].getRadius() && !callerWaveChild[j].Exists(x => x == i))
+					if (Vector3.Distance(responders[i].position, echoWaves[callerWaveIndex[j]].source) < echoWaves[callerWaveIndex[j]].getRadius() && !callerWaveChild[j].Exists(x => x == i))
 					{
 						Color color = new Color(0.5f, 1.0f, 1.0f, 1.0f);
 
@@ -65,12 +68,20 @@ public class EchoWaveManager : MonoBehaviour
 							responders[i].GetComponent<EnemyController>().Detected(caller.position);
 							color = new Color(1.0f, 0.2f, 0.2f, 1.0f);
 						}
+						else if (responders[i].CompareTag("Respawn"))
+						{
+							color = new Color(1.0f, 0.2f, 1.0f, 1.0f);
+						}
+						else if (responders[i].CompareTag("NPC"))
+						{
+							color = new Color(0.5f, 0.5f, 1.0f, 1.0f);
+						}
 
-						CreateWave(echoWaves[callerWaveIndex[j]].maxLife, echoWaves[callerWaveIndex[j]].getSpeed());
+						CreateWave(echoWaves[callerWaveIndex[j]].maxLife/lifeMultiplier, echoWaves[callerWaveIndex[j]].getSpeed());
 						responderWaveIndex.Add(echoWaves.Count - 1);
 						callerWaveChild[j].Add(i);
 						echoWaves[echoWaves.Count - 1].setLife(echoWaves[callerWaveIndex[j]].getLife());
-						echoWaves[echoWaves.Count - 1].source = responders[i];
+						echoWaves[echoWaves.Count - 1].source = responders[i].position;
 						echoWaves[echoWaves.Count - 1].color = color;
 						echoWaves[echoWaves.Count - 1].setPropagating(true);
 					}
@@ -101,10 +112,10 @@ public class EchoWaveManager : MonoBehaviour
 			DestroyWave(0);
 			Debug.Log("New wave count: " + echoWaves.Count);
 		}
-		echoWaves[echoWaves.Count - 1].maxLife = maxLife;
+		echoWaves[echoWaves.Count - 1].maxLife = maxLife * lifeMultiplier;
 		echoWaves[echoWaves.Count - 1].setLife(0.0f);
 		echoWaves[echoWaves.Count - 1].setSpeed(speed);
-		echoWaves[echoWaves.Count - 1].source = caller;
+		echoWaves[echoWaves.Count - 1].source = caller.position;
 		echoWaves[echoWaves.Count - 1].color = new Color(0.5f, 0.5f, 1.0f, 1.0f);
 	}
 
@@ -152,7 +163,7 @@ public class EchoWaveManager : MonoBehaviour
 	{
 		for(int i=0; i<echoWaves.Count; i++)
 		{
-			waveSource[i] = echoWaves[i].source.position;
+			waveSource[i] = echoWaves[i].source;
 			waveRadius[i] = echoWaves[i].getRadius();
 			waveLife[i] = echoWaves[i].remainingLife()/echoWaves[i].maxLife;
 			waveColor[i] = echoWaves[i].color;
@@ -161,7 +172,7 @@ public class EchoWaveManager : MonoBehaviour
 
 	public void DoWalk()
 	{
-		CreateWave(1.0f, 1.0f);
+		CreateWave(0.3f, 3.0f);
 		callerWaveIndex.Add(echoWaves.Count - 1);
 		callerWaveChild.Add(new List<int>());
 		echoWaves[echoWaves.Count - 1].color = new Color(0.25f, 0.25f, 0.5f, 1.0f);
@@ -172,7 +183,7 @@ public class EchoWaveManager : MonoBehaviour
 	{
 		CreateWave(0.75f, 1.0f);
 		responderWaveIndex.Add(echoWaves.Count - 1);
-		echoWaves[echoWaves.Count - 1].source = position;
+		echoWaves[echoWaves.Count - 1].source = position.position;
 		echoWaves[echoWaves.Count - 1].color = new Color(0.3f, 0.06f, 0.06f, 1.0f);
 		echoWaves[echoWaves.Count - 1].setPropagating(true);
 	}
@@ -189,8 +200,17 @@ public class EchoWaveManager : MonoBehaviour
 	{
 		CreateWave(2.0f, 5.0f);
 		responderWaveIndex.Add(echoWaves.Count - 1);
-		echoWaves[echoWaves.Count - 1].source = position;
+		echoWaves[echoWaves.Count - 1].source = position.position;
 		echoWaves[echoWaves.Count - 1].color = new Color(1.0f, 0.2f, 0.2f, 1.0f);
+		echoWaves[echoWaves.Count - 1].setPropagating(true);
+	}
+
+	public void DoNPCWalk(Transform position)
+	{
+		CreateWave(0.75f, 1.0f);
+		responderWaveIndex.Add(echoWaves.Count - 1);
+		echoWaves[echoWaves.Count - 1].source = position.position;
+		echoWaves[echoWaves.Count - 1].color = new Color(0.5f, 0.5f, 1.0f, 1.0f);
 		echoWaves[echoWaves.Count - 1].setPropagating(true);
 	}
 }
