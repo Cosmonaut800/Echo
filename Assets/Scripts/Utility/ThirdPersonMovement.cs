@@ -20,11 +20,13 @@ public class ThirdPersonMovement : MonoBehaviour
 	private Vector3 velocity = Vector3.zero;
 	private bool moveLock = false;
 	private bool stompLock = false;
+	private Tutorial tutorial;
 
 	// Start is called before the first frame update
 	void Start()
     {
 		Cursor.lockState = CursorLockMode.Locked;
+		tutorial = FindObjectOfType<Tutorial>();
     }
 
     // Update is called once per frame
@@ -55,7 +57,11 @@ public class ThirdPersonMovement : MonoBehaviour
 
 		if (moveLock) isMoving = false;
 		animator.SetBool("isMoving", isMoving);
-		if (Input.GetButtonDown("Fire1") && !stompLock) animator.SetTrigger("stomp");
+		if (Input.GetButtonDown("Fire1") && !stompLock)
+		{
+			animator.SetTrigger("stomp");
+			tutorial.TriggerStomp();
+		}
 
 		controller.Move(velocity * Time.deltaTime);
     }
@@ -86,5 +92,15 @@ public class ThirdPersonMovement : MonoBehaviour
 	public void LockStomp(bool value)
 	{
 		stompLock = value;
+	}
+
+	public bool GetMoveLock()
+	{
+		return moveLock;
+	}
+
+	public bool GetStompLock()
+	{
+		return stompLock;
 	}
 }

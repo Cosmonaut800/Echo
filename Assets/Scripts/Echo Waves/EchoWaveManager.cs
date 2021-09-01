@@ -68,6 +68,10 @@ public class EchoWaveManager : MonoBehaviour
 							responders[i].GetComponent<EnemyController>().Detected(caller.position);
 							color = new Color(1.0f, 0.2f, 0.2f, 1.0f);
 						}
+						else if (responders[i].CompareTag("Respawn"))
+						{
+							color = new Color(1.0f, 0.2f, 1.0f, 1.0f);
+						}
 
 						CreateWave(echoWaves[callerWaveIndex[j]].maxLife/lifeMultiplier, echoWaves[callerWaveIndex[j]].getSpeed());
 						responderWaveIndex.Add(echoWaves.Count - 1);
@@ -194,6 +198,15 @@ public class EchoWaveManager : MonoBehaviour
 		responderWaveIndex.Add(echoWaves.Count - 1);
 		echoWaves[echoWaves.Count - 1].source = position.position;
 		echoWaves[echoWaves.Count - 1].color = new Color(1.0f, 0.2f, 0.2f, 1.0f);
+		echoWaves[echoWaves.Count - 1].setPropagating(true);
+	}
+
+	public void DoNPCWalk(Transform position)
+	{
+		CreateWave(0.75f, 1.0f);
+		responderWaveIndex.Add(echoWaves.Count - 1);
+		echoWaves[echoWaves.Count - 1].source = position.position;
+		echoWaves[echoWaves.Count - 1].color = new Color(0.5f, 0.5f, 1.0f, 1.0f);
 		echoWaves[echoWaves.Count - 1].setPropagating(true);
 	}
 }

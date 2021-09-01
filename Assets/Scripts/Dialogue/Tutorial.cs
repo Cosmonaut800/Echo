@@ -9,6 +9,15 @@ public class Tutorial : MonoBehaviour
 	public bool hasRemembered = false;
 	public bool hasDug = false;
 
+	public Animator tutorial;
+	public Animator spotlight;
+	public Animator title;
+	public Animator wares;
+
+	private int stompCount = 0;
+	private int digCount = 0;
+	private int memoryCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +27,37 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+		if (stompCount ==1)
+		{
+			tutorial.SetTrigger("Move");
+			stompCount++;
+		}
+		else if (stompCount == 3)
+		{
+			tutorial.SetTrigger("Echo");
+			stompCount++;
+		}
+		
+		if (digCount == 1)
+		{
+			tutorial.SetTrigger("Dig");
+			digCount++;
+		}
+
+		if (memoryCount == 1)
+		{
+			tutorial.SetTrigger("Memory");
+			memoryCount++;
+		}
     }
 
 	public void TriggerStomp()
 	{
 		hasStomped = true;
+		spotlight.SetTrigger("Open");
+		title.SetTrigger("Stomp");
+		wares.SetTrigger("Open");
+		stompCount++;
 	}
 
 	public void TriggerMove()
@@ -34,10 +68,12 @@ public class Tutorial : MonoBehaviour
 	public void TriggerRemember()
 	{
 		hasRemembered = true;
+		memoryCount++;
 	}
 
 	public void TriggerDig()
 	{
 		hasDug = true;
+		digCount++;
 	}
 }

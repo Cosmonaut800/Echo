@@ -7,6 +7,10 @@ using TMPro;
 public class Pickup : MonoBehaviour
 {
 	public TextMeshProUGUI displayText;
+	public Animator gainAnimator;
+	public TextMeshProUGUI gainText;
+	public Animator loseAnimator;
+	public TextMeshProUGUI loseText;
 
 	[SerializeField]
 	private int itemCount = 3;
@@ -26,17 +30,32 @@ public class Pickup : MonoBehaviour
 	public void Increment()
 	{
 		itemCount++;
+		IncreaseAnim(1);
 	}
 
 	public void Decrement()
 	{
 		itemCount--;
 		if (itemCount < 0) itemCount = 0;
+		else DecreaseAnim(1);
 	}
 
 	public void Decrement(int amount)
 	{
 		itemCount -= amount;
 		if (itemCount < 0) itemCount = 0;
+		else DecreaseAnim(amount);
+	}
+
+	private void IncreaseAnim(int amount)
+	{
+		gainText.text = "+" + amount.ToString();
+		gainAnimator.SetTrigger("Gain");
+	}
+
+	private void DecreaseAnim(int amount)
+	{
+		loseText.text = "-" + amount.ToString();
+		loseAnimator.SetTrigger("Lose");
 	}
 }
