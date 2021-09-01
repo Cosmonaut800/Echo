@@ -7,7 +7,7 @@ public class OwlAttackState : State
 	public OwlEnemyController enemyController;
 	public OwlRetreatState retreatState;
 	public Vector3 target;
-	public CapsuleCollider hurtBox;
+	//public CapsuleCollider hurtBox;
 
 	public float outerRange = 20.0f;
 	public float middleRange = 10.0f;

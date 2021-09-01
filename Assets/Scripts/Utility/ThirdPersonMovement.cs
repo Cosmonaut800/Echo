@@ -71,12 +71,15 @@ public class ThirdPersonMovement : MonoBehaviour
 		return isMoving;
 	}
 
-	public void DoDamage(Vector3 position, float range)
+	public bool DoDamage(Vector3 position, float range)
 	{
-		if (Vector3.Distance(transform.position, position) < range)
+		bool success = false;
+		if (success = Vector3.Distance(transform.position, position) < range)
 		{
 			animator.SetTrigger("damage");
 		}
+
+		return success;
 	}
 
 	public bool CheckMoveCondition()

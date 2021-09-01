@@ -32,8 +32,10 @@ public class SnakeEnemyRedirect : MonoBehaviour
 
 	public void DoDamage()
 	{
-		healthManager.DealDamage(5.0f);
-		playerController.DoDamage(transform.position, 25.0f);
+		if (playerController.DoDamage(transform.position, 25.0f))
+		{
+			healthManager.DealDamage(5.0f);
+		}
 	}
 
 	public void DecrementItems()
