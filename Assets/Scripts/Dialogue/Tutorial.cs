@@ -8,6 +8,7 @@ public class Tutorial : MonoBehaviour
 	public bool hasMoved = false;
 	public bool hasRemembered = false;
 	public bool hasDug = false;
+	public bool hasWinded = false;
 
 	public Animator tutorial;
 	public Animator spotlight;
@@ -17,6 +18,7 @@ public class Tutorial : MonoBehaviour
 	private int stompCount = 0;
 	private int digCount = 0;
 	private int memoryCount = 0;
+	private int windCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +51,12 @@ public class Tutorial : MonoBehaviour
 			tutorial.SetTrigger("Memory");
 			memoryCount++;
 		}
+
+		if(windCount == 1)
+		{
+			tutorial.SetTrigger("Wind");
+			windCount++;
+		}
     }
 
 	public void TriggerStomp()
@@ -75,5 +83,11 @@ public class Tutorial : MonoBehaviour
 	{
 		hasDug = true;
 		digCount++;
+	}
+
+	public void TriggerWind()
+	{
+		hasWinded = true;
+		windCount++;
 	}
 }
