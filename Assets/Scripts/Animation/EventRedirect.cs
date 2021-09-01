@@ -12,6 +12,7 @@ public class EventRedirect : MonoBehaviour
 	public AudioSource dig;
 	public EchoWaveManager echoWaveManager;
 	public Pickup pickup;
+	public Compass compass;
 
     public void DoStomp()
 	{
@@ -60,5 +61,10 @@ public class EventRedirect : MonoBehaviour
 	public void PlayDig()
 	{
 		dig.Play();
+	}
+
+	public void ShowArrows()
+	{
+		compass.ShowArrows();
 	}
 }
