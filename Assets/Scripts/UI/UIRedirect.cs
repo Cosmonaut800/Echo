@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIRedirect : MonoBehaviour
 {
 	public ThirdPersonMovement player;
+	public SpeechArea NPC;
     
 	public void LockMovement()
 	{
@@ -36,5 +37,10 @@ public class UIRedirect : MonoBehaviour
 	{
 		player.LockMovement(false);
 		player.LockStomp(false);
+	}
+
+	public void LockNPC()
+	{
+		NPC.dialogueStarted = false;
 	}
 }

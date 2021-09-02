@@ -11,6 +11,7 @@ public class Pickup : MonoBehaviour
 	public TextMeshProUGUI gainText;
 	public Animator loseAnimator;
 	public TextMeshProUGUI loseText;
+	public TextMeshProUGUI credits;
 
 	[SerializeField]
 	private int itemCount = 3;
@@ -25,6 +26,7 @@ public class Pickup : MonoBehaviour
     void Update()
     {
 		displayText.text = itemCount.ToString();
+		credits.text = itemCount.ToString();
 	}
 
 	public void Increment()

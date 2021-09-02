@@ -7,6 +7,7 @@ public class GateRedirect : MonoBehaviour
 	private EchoWaveManager echoManager;
 	public Transform leftPivot;
 	public Transform rightPivot;
+	public AudioSource gateOpen;
 
     // Start is called before the first frame update
     void Start()
@@ -18,5 +19,10 @@ public class GateRedirect : MonoBehaviour
 	{
 		echoManager.DoNPCWalk(leftPivot);
 		echoManager.DoNPCWalk(rightPivot);
+	}
+
+	public void PlaySound()
+	{
+		gateOpen.Play();
 	}
 }

@@ -10,7 +10,8 @@ public class SpeechArea : MonoBehaviour
 	public Animator specialAnimator;
 
 	private DialogueManager manager;
-	private bool dialogueStarted = false;
+	[HideInInspector]
+	public bool dialogueStarted = false;
 	private EchoWaveManager echoManager;
 	private float talkTimer = 0.0f;
 	private int spokenCount = 0;
@@ -20,6 +21,7 @@ public class SpeechArea : MonoBehaviour
     {
 		manager = FindObjectOfType<DialogueManager>();
 		echoManager = FindObjectOfType<EchoWaveManager>();
+		talkTimer = Random.Range(0.0f, 4.0f);
     }
 
     // Update is called once per frame
@@ -29,6 +31,7 @@ public class SpeechArea : MonoBehaviour
 		{
 			specialAnimator.SetTrigger("DialogueEnd");
 			spokenCount++;
+			//dialogueStarted = false;
 		}
 
 		if (!dialogueAnimator.GetBool("IsOpen") && dialogueStarted)
@@ -38,7 +41,7 @@ public class SpeechArea : MonoBehaviour
 			//dialogueStarted = false;
 		}
 
-		if (Input.GetButtonDown("Fire1")) manager.DisplayNextSentence();
+		if (dialogueStarted && Input.GetButtonDown("Fire1")) manager.DisplayNextSentence();
 
 		talkTimer += Time.deltaTime;
 

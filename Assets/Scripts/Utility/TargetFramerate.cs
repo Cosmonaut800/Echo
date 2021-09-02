@@ -6,6 +6,11 @@ public class TargetFramerate : MonoBehaviour
 {
 	// Start is called before the first frame update
 	public int target = 60;
+	public GameObject confirmQuitText;
+
+	private bool confirm = false;
+	private float timer = 0.0f;
+
 	void Awake()
 	{
 		QualitySettings.vSyncCount = 0;
@@ -19,7 +24,27 @@ public class TargetFramerate : MonoBehaviour
 
 		if(Input.GetKeyUp(KeyCode.Escape))
 		{
-			Application.Quit();
+			if (confirm)
+			{
+				Application.Quit();
+			}
+			confirm = true;
+		}
+
+		if (!confirm)
+		{
+			timer = 0.0f;
+			confirmQuitText.SetActive(false);
+		}
+		else
+		{
+			timer += Time.deltaTime;
+			confirmQuitText.SetActive(true);
+			if (timer > 5.0f)
+			{
+				confirm = false;
+				confirmQuitText.SetActive(false);
+			}
 		}
 	}
 }
