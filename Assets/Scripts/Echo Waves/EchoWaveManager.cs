@@ -61,7 +61,7 @@ public class EchoWaveManager : MonoBehaviour
 				{
 					if (Vector3.Distance(responders[i].position, echoWaves[callerWaveIndex[j]].source) < echoWaves[callerWaveIndex[j]].getRadius() && !callerWaveChild[j].Exists(x => x == i))
 					{
-						Color color = new Color(0.5f, 1.0f, 1.0f, 1.0f);
+						Color color = new Color(1.0f, 1.0f, 0.5f, 1.0f);
 
 						if (responders[i].CompareTag("Enemy"))
 						{
@@ -70,7 +70,7 @@ public class EchoWaveManager : MonoBehaviour
 						}
 						else if (responders[i].CompareTag("Respawn"))
 						{
-							color = new Color(1.0f, 0.2f, 1.0f, 1.0f);
+							color = new Color(0.5f, 1.0f, 0.8f, 1.0f);
 						}
 						else if (responders[i].CompareTag("NPC"))
 						{

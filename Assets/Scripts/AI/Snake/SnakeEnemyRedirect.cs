@@ -12,6 +12,7 @@ public class SnakeEnemyRedirect : MonoBehaviour
 
 	public void AttackEnded()
 	{
+		Debug.Log("redirect AttackEnded()");
 		enemyController.AttackEnded();
 	}
 

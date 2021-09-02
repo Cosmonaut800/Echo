@@ -7,11 +7,13 @@ public class SpeechArea : MonoBehaviour
 	public ThirdPersonMovement player;
 	public Animator dialogueAnimator;
 	public Dialogue dialogue;
+	public Animator specialAnimator;
 
 	private DialogueManager manager;
 	private bool dialogueStarted = false;
 	private EchoWaveManager echoManager;
 	private float talkTimer = 0.0f;
+	private int spokenCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,12 @@ public class SpeechArea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if (spokenCount == 1 && manager.dialogueEnded)
+		{
+			specialAnimator.SetTrigger("DialogueEnd");
+			spokenCount++;
+		}
+
 		if (!dialogueAnimator.GetBool("IsOpen") && dialogueStarted)
 		{
 			player.LockMovement(false);
@@ -43,6 +51,8 @@ public class SpeechArea : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		spokenCount++;
+
 		if (!dialogueStarted)
 		{
 			player.LockMovement(true);
