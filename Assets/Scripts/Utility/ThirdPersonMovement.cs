@@ -18,11 +18,15 @@ public class ThirdPersonMovement : MonoBehaviour
 	private bool isGrounded = false;
 	private bool isMoving;
 	private Vector3 velocity = Vector3.zero;
+	private bool moveLock = false;
+	private bool stompLock = false;
+	private Tutorial tutorial;
 
 	// Start is called before the first frame update
 	void Start()
     {
 		Cursor.lockState = CursorLockMode.Locked;
+		tutorial = FindObjectOfType<Tutorial>();
     }
 
     // Update is called once per frame
@@ -51,8 +55,13 @@ public class ThirdPersonMovement : MonoBehaviour
 			velocity.y = -5.0f;
 		}
 
+		if (moveLock) isMoving = false;
 		animator.SetBool("isMoving", isMoving);
-		if (Input.GetButtonDown("Fire1")) animator.SetTrigger("stomp");
+		if (Input.GetButtonDown("Fire1") && !stompLock)
+		{
+			animator.SetTrigger("stomp");
+			tutorial.TriggerStomp();
+		}
 
 		controller.Move(velocity * Time.deltaTime);
     }
@@ -62,16 +71,39 @@ public class ThirdPersonMovement : MonoBehaviour
 		return isMoving;
 	}
 
-	public void DoDamage(Vector3 position)
+	public bool DoDamage(Vector3 position, float range)
 	{
-		if (Vector3.Distance(transform.position, position) < 10.0f)
+		bool success = false;
+		if (success = Vector3.Distance(transform.position, position) < range)
 		{
 			animator.SetTrigger("damage");
 		}
+
+		return success;
 	}
 
 	public bool CheckMoveCondition()
 	{
-		return !animator.GetCurrentAnimatorStateInfo(0).IsName("Stomp") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Loot");
+		return !animator.GetCurrentAnimatorStateInfo(0).IsName("Stomp") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Loot") && !moveLock;
+	}
+
+	public void LockMovement(bool value)
+	{
+		moveLock = value;
+	}
+
+	public void LockStomp(bool value)
+	{
+		stompLock = value;
+	}
+
+	public bool GetMoveLock()
+	{
+		return moveLock;
+	}
+
+	public bool GetStompLock()
+	{
+		return stompLock;
 	}
 }

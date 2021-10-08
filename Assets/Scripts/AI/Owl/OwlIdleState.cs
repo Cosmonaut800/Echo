@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OwlIdleState : State
 {
+	public OwlEnemyController enemyController;
 	public OwlAttackState attackState;
 	public Transform home;
 
@@ -14,6 +15,7 @@ public class OwlIdleState : State
 
 		if(detectPlayer)
 		{
+			enemyController.SetIsFlying(true);
 			attackState.reachedPlayer = false;
 			detectPlayer = false;
 			return attackState;

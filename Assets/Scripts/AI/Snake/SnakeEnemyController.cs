@@ -19,7 +19,9 @@ public class SnakeEnemyController : EnemyController
 	private bool isChasing = false;
 	private bool isSearching = false;
 	private bool isMoving = false;
-	private bool inAttack = false;
+
+	[HideInInspector]
+	public bool inAttack = false;
 
 	public void Start()
 	{
@@ -30,7 +32,7 @@ public class SnakeEnemyController : EnemyController
 
 	public void Update()
 	{
-		inAttack = false;
+		//inAttack = false;
 		direction = player.position - transform.position;
 		direction.Normalize();
 		float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
@@ -87,11 +89,13 @@ public class SnakeEnemyController : EnemyController
 
 	public void AttackEnded()
 	{
+		Debug.Log("controller AttackEnded()");
 		inAttack = true;
 	}
 
 	public bool GetInAttack()
 	{
+		Debug.Log("GetInAttack(): " + inAttack);
 		return inAttack;
 	}
 

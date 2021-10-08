@@ -42,6 +42,7 @@ public class SnakeChaseState : State
 
 		if (isInRange)
 		{
+			Debug.Log("Exiting SnakeChaseState");
 			chaseSound.Stop();
 			enemyController.SetIsSearching(true);
 			enemyController.TriggerAttack();
@@ -55,7 +56,7 @@ public class SnakeChaseState : State
 
 	private bool CheckIsInRange()
 	{
-		isInRange = (Vector3.Distance(transform.position, target) < 6.0f);
+		isInRange = (Vector3.Distance(transform.position, target) < 20.0f);
 
 		return isInRange;
 	}

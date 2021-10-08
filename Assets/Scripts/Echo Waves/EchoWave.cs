@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EchoWave// : MonoBehaviour
 {
-	public Transform source;
+	public Vector3 source;
 	public float maxLife;
 	public Color color;
 

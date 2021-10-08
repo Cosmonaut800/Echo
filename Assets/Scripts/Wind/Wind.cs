@@ -9,12 +9,16 @@ public class Wind : MonoBehaviour
 	public BoxCollider wind;
 	private Collider player;
 
+	private Tutorial tutorial;
+
 	private void Start()
 	{
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>();
 		if (player == null) Debug.Log("Player collider not found.");
 		wind = transform.GetComponent<BoxCollider>();
 		if (wind == null) Debug.Log("Wind box not found.");
+
+		tutorial = FindObjectOfType<Tutorial>();
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -22,6 +26,7 @@ public class Wind : MonoBehaviour
 		//echoManager.lifeMultiplier = 0.15f;
 		animator.SetBool("InWind", true);
 		Debug.Log("Entered wind box.");
+		tutorial.TriggerWind();
 	}
 
 	private void OnTriggerExit(Collider other)
