@@ -1,32 +1,11 @@
 fileFormatVersion: 2
-guid: 40bfe4063b2581c4f8301adc2a52a9eb
+guid: 772c922e60173294d94049301b92d30b
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -192699916540116968
-    second: Armature|Snake.Attack.Full
-  - first:
-      74: -920309560110852854
-    second: Armature|Snake.Attack.Short
-  - first:
-      74: -2108353550697977735
-    second: Armature|Snake.Default
-  - first:
-      74: -2446011903044105248
-    second: Armature|Snake.Emerge
-  - first:
-      74: -8255345127729582084
-    second: Armature|Snake.Idle
-  - first:
-      74: 7355630764157526605
-    second: Armature|Snake.Slither
-  - first:
-      74: 4599610086950297171
-    second: Armature|Snake.Strike
-  - first:
-      74: 7008972085632239679
-    second: Armature|Snake.Submerge
+      74: -623603649343465320
+    second: Scene
   externalObjects: {}
   materials:
     materialImportMode: 2

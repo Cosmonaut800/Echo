@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 40bfe4063b2581c4f8301adc2a52a9eb
+guid: ea8d6af7eddf055469c5d1ea70de96d2
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
@@ -27,6 +27,9 @@ ModelImporter:
   - first:
       74: 7008972085632239679
     second: Armature|Snake.Submerge
+  - first:
+      74: 885944232402757753
+    second: Armature|Action
   externalObjects: {}
   materials:
     materialImportMode: 2
