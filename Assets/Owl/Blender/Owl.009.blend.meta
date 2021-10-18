@@ -1,23 +1,11 @@
 fileFormatVersion: 2
-guid: 3e12a8d747b5a6f40871c397648d45f9
+guid: 795e7553ed2704e4f97d65291b4782d2
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -1254202672094116592
-    second: Armature|Owl.Attack
-  - first:
-      74: 5317291516635439757
-    second: Armature|Owl.Default
-  - first:
-      74: -716681440644905941
-    second: Armature|Owl.Fly
-  - first:
-      74: 8983498723367424117
-    second: Armature|Owl.Idle
-  - first:
-      74: -2381099815783890398
-    second: Armature|Owl.Lift
+      74: -623603649343465320
+    second: Scene
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -101,7 +89,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: Armature
+    rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
@@ -109,7 +97,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
