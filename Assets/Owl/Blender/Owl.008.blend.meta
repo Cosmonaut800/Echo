@@ -1,32 +1,11 @@
 fileFormatVersion: 2
-guid: 8c41994645f61bd47aeae4c9ed253c79
+guid: 4ca884da9001a9948a0465f5f5c3e22a
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: 5967901551054360515
-    second: Armature|Player.Damage.Heavy
-  - first:
-      74: 788657015890796541
-    second: Armature|Player.Damage.Light
-  - first:
-      74: 1883668999326424460
-    second: Armature|Player.Default
-  - first:
-      74: 2878153670184716498
-    second: Armature|Player.Idle.Heavy
-  - first:
-      74: -6895026053707337015
-    second: Armature|Player.Idle.Light
-  - first:
-      74: -2245500253451307463
-    second: Armature|Player.L.Stomp
-  - first:
-      74: 4121099143320077450
-    second: Armature|Player.Loot
-  - first:
-      74: -8006300898129053907
-    second: Armature|Player.Run
+      74: -623603649343465320
+    second: Scene
   externalObjects: {}
   materials:
     materialImportMode: 2
