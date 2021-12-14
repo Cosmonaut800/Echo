@@ -89,13 +89,11 @@ public class SnakeEnemyController : EnemyController
 
 	public void AttackEnded()
 	{
-		Debug.Log("controller AttackEnded()");
 		inAttack = true;
 	}
 
 	public bool GetInAttack()
 	{
-		Debug.Log("GetInAttack(): " + inAttack);
 		return inAttack;
 	}
 

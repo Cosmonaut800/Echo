@@ -19,7 +19,6 @@ public class SnakeAttackState : State
 		inAnimation = enemyController.GetInAttack();
 		enemyController.SetGFXPosition(transform.position - (1.9f * Vector3.up));
 
-		Debug.Log("IsInAnimation: " + enemyController.IsInAnimation("Armature_Snake_Emerge"));
 		if(enemyController.IsInAnimation("Armature_Snake_Emerge"))
 		{
 			enemyController.TriggerAttack();
@@ -28,7 +27,6 @@ public class SnakeAttackState : State
 		if (enemyController.GetInAttack())
 		{
 			enemyController.inAttack = false;
-			Debug.Log("Exiting SnakeAttackState");
 			enemyController.SetIsSearching(false);
 			enemyController.SetIsIdle(true);
 			idleState.SetDetectPlayer(false);

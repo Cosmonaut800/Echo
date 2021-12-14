@@ -42,7 +42,6 @@ public class SnakeChaseState : State
 
 		if (isInRange)
 		{
-			Debug.Log("Exiting SnakeChaseState");
 			chaseSound.Stop();
 			enemyController.SetIsSearching(true);
 			enemyController.TriggerAttack();

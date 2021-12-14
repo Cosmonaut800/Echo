@@ -4,6 +4,7 @@
     {
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
+		_Normal("Normal", 2D) = "bump" {}
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
 		_Engine ("Engine", float) = 0.0
@@ -21,10 +22,12 @@
         #pragma target 3.0
 
         sampler2D _MainTex;
+		sampler2D _Normal;
 
         struct Input
         {
             float2 uv_MainTex;
+			float2 uv_Normal;
 			float3 worldPos;
         };
 
@@ -54,13 +57,14 @@
 
 				fixed4 e = c * _WaveColor[i];
 				e *= _WaveLife[i];
-				o.Emission += max(e.rgb * (dist < _WaveRadius[i]) * pow(dist / _WaveRadius[i], 2.0f), 0.0f);
-				//o.Emission += lerp(0.0f, 0.2f * _WaveLife[i], (dist < _WaveRadius[i]) * pow(dist / _WaveRadius[i], 8.0f));
-				//o.Emission += max(lerp(float3(0.0f, 0.0f, 0.0f), e.rgb, (dist < _WaveRadius[i]) * pow(dist / _WaveRadius[i], 1.0f)), 0.0f);
+				//o.Emission += max(e.rgb * (dist < _WaveRadius[i]) * pow(dist / _WaveRadius[i], 2.0f), 0.0f);
+				o.Emission += max(lerp(0.0f, _WaveColor[i] * _WaveLife[i], (dist < _WaveRadius[i]) * pow(dist / _WaveRadius[i], 8.0f)), 0.0f);
+				o.Emission += max(lerp(0.0f, e.rgb, (dist < _WaveRadius[i]) * pow(dist / _WaveRadius[i], 2.0f)), 0.0f);
 				//o.Emission = clamp(o.Emission, 0.0f, 1.0f);
 			}
 
             o.Albedo = c.rgb;
+			o.Normal = UnpackNormal(tex2D(_Normal, IN.uv_Normal));
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;

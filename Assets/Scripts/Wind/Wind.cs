@@ -25,7 +25,6 @@ public class Wind : MonoBehaviour
 	{
 		//echoManager.lifeMultiplier = 0.15f;
 		animator.SetBool("InWind", true);
-		Debug.Log("Entered wind box.");
 		tutorial.TriggerWind();
 	}
 
@@ -33,7 +32,6 @@ public class Wind : MonoBehaviour
 	{
 		//echoManager.lifeMultiplier = 1.0f;
 		animator.SetBool("InWind", false);
-		Debug.Log("Exited wind box.");
 	}
 
 	private void OnDrawGizmos()

@@ -45,6 +45,7 @@ public class HealthManager : MonoBehaviour
 		fadeTriggered = false;
 		timer = 0.0f;
 		controller.Move(checkpoint.position - transform.position);
-		//transform.position = checkpoint.position;
+		controller.SimpleMove(Vector3.zero);
+		transform.position = checkpoint.position;
 	}
 }

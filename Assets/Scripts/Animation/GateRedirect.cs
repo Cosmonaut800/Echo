@@ -8,6 +8,7 @@ public class GateRedirect : MonoBehaviour
 	public Transform leftPivot;
 	public Transform rightPivot;
 	public AudioSource gateOpen;
+	public AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
@@ -24,5 +25,10 @@ public class GateRedirect : MonoBehaviour
 	public void PlaySound()
 	{
 		gateOpen.Play();
+	}
+
+	public void PlayMusic()
+	{
+		audioManager.Play("music");
 	}
 }

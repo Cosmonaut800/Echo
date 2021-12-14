@@ -59,7 +59,6 @@ public class SnakeIdleState : State
 
 		if (detectPlayer)
 		{
-			Debug.Log("Exiting SnakeIdleState");
 			enemyController.SetIsIdle(false);
 			return chaseState;
 		}

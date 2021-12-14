@@ -44,6 +44,10 @@ public class EchoWave// : MonoBehaviour
 
 	public float remainingLife()
 	{
+		if (maxLife - life < 0.0f)
+		{
+			return 0.0f;
+		}
 		return maxLife - life;
 	}
 
