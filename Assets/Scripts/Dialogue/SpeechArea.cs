@@ -45,7 +45,7 @@ public class SpeechArea : MonoBehaviour
 
 		talkTimer += Time.deltaTime;
 
-		if (talkTimer > 5.0f)
+		if (talkTimer > 2.5f)
 		{
 			talkTimer = 0.0f;
 			echoManager.DoNPCWalk(transform);

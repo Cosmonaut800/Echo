@@ -7,6 +7,7 @@ public class TargetFramerate : MonoBehaviour
 	// Start is called before the first frame update
 	public int target = 60;
 	public GameObject confirmQuitText;
+	public bool ended = false;
 
 	private bool confirm = false;
 	private float timer = 0.0f;
@@ -22,7 +23,7 @@ public class TargetFramerate : MonoBehaviour
     {
 		if (Application.targetFrameRate != target) Application.targetFrameRate = target;
 
-		if(Input.GetKeyUp(KeyCode.Escape))
+		if(Input.GetKeyUp(KeyCode.Escape) && ended)
 		{
 			if (confirm)
 			{
@@ -46,5 +47,10 @@ public class TargetFramerate : MonoBehaviour
 				confirmQuitText.SetActive(false);
 			}
 		}
+	}
+
+	public void QuitGame()
+	{
+		Application.Quit();
 	}
 }
