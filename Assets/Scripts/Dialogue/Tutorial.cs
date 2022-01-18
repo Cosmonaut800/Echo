@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Tutorial : MonoBehaviour
 {
@@ -14,6 +16,15 @@ public class Tutorial : MonoBehaviour
 	public Animator spotlight;
 	public Animator title;
 	public Animator wares;
+
+	public Button basicsButton;
+	public Button checkpointsButton;
+	public Button trinketsButton;
+	public Button windButton;
+	public TextMeshProUGUI basicsText;
+	public TextMeshProUGUI checkpointsText;
+	public TextMeshProUGUI trinketsText;
+	public TextMeshProUGUI windText;
 
 	private int stompCount = 0;
 	private int digCount = 0;
@@ -89,5 +100,45 @@ public class Tutorial : MonoBehaviour
 	{
 		hasWinded = true;
 		windCount++;
+	}
+
+	public void ActivateButtons()
+	{
+		basicsButton.gameObject.SetActive(true);
+		checkpointsButton.gameObject.SetActive(hasRemembered);
+		trinketsButton.gameObject.SetActive(hasDug);
+		windButton.gameObject.SetActive(hasWinded);
+	}
+
+	public void ButtonBasics()
+	{
+		basicsText.gameObject.SetActive(true);
+		checkpointsText.gameObject.SetActive(false);
+		trinketsText.gameObject.SetActive(false);
+		windText.gameObject.SetActive(false);
+	}
+
+	public void ButtonCheckpoints()
+	{
+		basicsText.gameObject.SetActive(false);
+		checkpointsText.gameObject.SetActive(true);
+		trinketsText.gameObject.SetActive(false);
+		windText.gameObject.SetActive(false);
+	}
+
+	public void ButtonTrinkets()
+	{
+		basicsText.gameObject.SetActive(false);
+		checkpointsText.gameObject.SetActive(false);
+		trinketsText.gameObject.SetActive(true);
+		windText.gameObject.SetActive(false);
+	}
+
+	public void ButtonWind()
+	{
+		basicsText.gameObject.SetActive(false);
+		checkpointsText.gameObject.SetActive(false);
+		trinketsText.gameObject.SetActive(false);
+		windText.gameObject.SetActive(true);
 	}
 }

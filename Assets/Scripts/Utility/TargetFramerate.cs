@@ -12,6 +12,8 @@ public class TargetFramerate : MonoBehaviour
 	private bool confirm = false;
 	private float timer = 0.0f;
 
+	private int[,] resolutions = new int[2, 6] { { 1280, 1600, 1920, 800, 1024, 1280 }, { 720, 900, 1080, 600, 768, 960 } };
+
 	void Awake()
 	{
 		QualitySettings.vSyncCount = 1;
@@ -52,5 +54,15 @@ public class TargetFramerate : MonoBehaviour
 	public void QuitGame()
 	{
 		Application.Quit();
+	}
+
+	public void SetFullscreen(bool value)
+	{
+		Screen.fullScreen = value;
+	}
+
+	public void ChangeResolution(int option)
+	{
+		Screen.SetResolution(resolutions[0, option], resolutions[1, option], Screen.fullScreen);
 	}
 }

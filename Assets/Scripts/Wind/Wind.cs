@@ -46,7 +46,6 @@ public class Wind : MonoBehaviour
 		while(timer < timeToFade)
 		{
 			windSound.volume = (target - start) * (timer / timeToFade) + start;
-			Debug.Log(timer);
 
 			timer += Time.deltaTime;
 			yield return null;

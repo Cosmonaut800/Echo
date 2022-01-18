@@ -43,4 +43,14 @@ public class UIRedirect : MonoBehaviour
 	{
 		NPC.dialogueStarted = false;
 	}
+
+	public void LockPause()
+	{
+		PauseMenu.canBePaused = false;
+	}
+
+	public void UnlockPause()
+	{
+		PauseMenu.canBePaused = true;
+	}
 }

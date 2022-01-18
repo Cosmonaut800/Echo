@@ -5,6 +5,7 @@ using UnityEngine;
 public class EventRedirect : MonoBehaviour
 {
 	//public AudioManager audioManager;
+	public ThirdPersonMovement player;
 	public AudioSource stomp;
 	public AudioSource step1;
 	public AudioSource step2;
@@ -66,5 +67,15 @@ public class EventRedirect : MonoBehaviour
 	public void ShowArrows()
 	{
 		compass.ShowArrows();
+	}
+
+	public void SetStompLocked()
+	{
+		player.LockStomp(true);
+	}
+
+	public void SetStompUnlocked()
+	{
+		player.LockStomp(false);
 	}
 }

@@ -31,15 +31,17 @@ public class SpeechArea : MonoBehaviour
 		{
 			specialAnimator.SetTrigger("DialogueEnd");
 			spokenCount++;
-			//dialogueStarted = false;
-		}
-
-		if (!dialogueAnimator.GetBool("IsOpen") && dialogueStarted)
-		{
 			player.LockMovement(false);
 			player.LockStomp(false);
 			//dialogueStarted = false;
 		}
+
+		/*if (!dialogueAnimator.GetBool("IsOpen") && dialogueStarted)
+		{
+			player.LockMovement(false);
+			player.LockStomp(false);
+			//dialogueStarted = false;
+		}*/
 
 		if (dialogueStarted && Input.GetButtonDown("Fire1")) manager.DisplayNextSentence();
 
