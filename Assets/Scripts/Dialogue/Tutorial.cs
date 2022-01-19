@@ -108,6 +108,10 @@ public class Tutorial : MonoBehaviour
 		checkpointsButton.gameObject.SetActive(hasRemembered);
 		trinketsButton.gameObject.SetActive(hasDug);
 		windButton.gameObject.SetActive(hasWinded);
+		basicsText.gameObject.SetActive(false);
+		checkpointsText.gameObject.SetActive(false);
+		trinketsText.gameObject.SetActive(false);
+		windText.gameObject.SetActive(false);
 	}
 
 	public void ButtonBasics()
