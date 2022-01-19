@@ -8,8 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Owl.MAT
-  m_Shader: {fileID: 4800000, guid: 917b37092bae034459c28c00a3a19b54, type: 3}
-  m_ShaderKeywords: VIGNETTE_MASKED _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+  m_Shader: {fileID: 4800000, guid: ed04895971c00fc498c346df2ac0e9b4, type: 3}
+  m_ShaderKeywords: VIGNETTE_MASKED _BLENDMAINNORMAL_ON _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+    _SOURCE_SPECULARALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -351,6 +352,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecularAnisoJitterMacro:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -403,6 +408,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - DSGI: 0
     - Instancing: 0
@@ -427,6 +436,7 @@ Material:
     - _AnisoTangentMapUV: 0
     - _AnisoUseTangentMap: 0
     - _AnisoUseTangentMap1: 0
+    - _AoIntensity: 1
     - _AttenuationMultiplier: 0
     - _AudioLinkAddEmission1Band: 0
     - _AudioLinkAddEmissionBand: 0
@@ -494,8 +504,10 @@ Material:
     - _BackFaceTextureUV: 0
     - _BaseColor_Step: 0.5
     - _BaseShade_Feather: 0.0001
+    - _BlendMainNormal: 1
     - _BlendOp: 0
     - _BlendOpAlpha: 0
+    - _Brightness: 1
     - _BumpMapUV: 0
     - _BumpScale: 1
     - _CameraAngleMax: 90
@@ -512,6 +524,7 @@ Material:
     - _ClippingMaskUV: 0
     - _ColorMask: 15
     - _ContinuousDissolve: 0
+    - _ContrastDetailMap: 0
     - _Cull: 2
     - _Cutoff: 0.5
     - _DebugCameraData: 0
@@ -572,6 +585,7 @@ Material:
     - _DetailMaskUV: 0
     - _DetailNormalMapScale: 1
     - _DetailNormalMapUV: 0
+    - _DetailSaturation: 0
     - _DetailTexIntensity: 1
     - _DetailTexUV: 0
     - _DisableDirectionalInAdd: 1
@@ -638,6 +652,7 @@ Material:
     - _EmissionHueShiftEnabled1: 0
     - _EmissionHueShiftSpeed: 0
     - _EmissionHueShiftSpeed1: 0
+    - _EmissionIntensity: 1
     - _EmissionMap1UV: 0
     - _EmissionMapUV: 0
     - _EmissionMask1UV: 0
@@ -667,6 +682,7 @@ Material:
     - _EnableAudioLinkDebug: 0
     - _EnableBRDF: 0
     - _EnableClearCoat: 0
+    - _EnableDetailMask: 0
     - _EnableDissolve: 0
     - _EnableDissolveAudioLink: 0
     - _EnableDistortion: 0
@@ -752,7 +768,10 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 1
     - _IgnoreFog: 0
+    - _IntensityMask: 1
     - _Inverse_Clipping: 0
+    - _InvertABaseColor: 0
+    - _InvertMask: 0
     - _InvertSmoothness: 0
     - _LightingAOTexUV: 0
     - _LightingAdditiveDetailStrength: 1
@@ -882,7 +901,7 @@ Material:
     - _PanoInfiniteStereoToggle: 0
     - _PanoMaskUV: 0
     - _PanoToggle: 0
-    - _Parallax: 0.02
+    - _Parallax: 0
     - _ParallaxBias: 0.42
     - _ParallaxHeightMapEnabled: 0
     - _ParallaxHeightMapMaskUV: 0
@@ -958,6 +977,8 @@ Material:
     - _SmoothnessFrom1: 1
     - _SmoothnessMaskUV: 0
     - _SmoothnessTextureChannel: 0
+    - _Source: 0
+    - _SourceMask: 0
     - _Spec1Offset: 0
     - _Spec1Offset1: 0
     - _Spec2Smoothness: 0
@@ -976,6 +997,7 @@ Material:
     - _SpecularAnisoJitterMirrored: 0
     - _SpecularAnisoJitterMirrored1: 0
     - _SpecularHighlights: 1
+    - _SpecularIntensity: 0.2
     - _SpecularInvertSmoothness: 0
     - _SpecularInvertSmoothness1: 0
     - _SpecularLMOcclusion: 0
@@ -999,6 +1021,7 @@ Material:
     - _SpecularToonStart1: 0.95
     - _SpecularType: 1
     - _SpecularType1: 1
+    - _SpreadDetailMap: 0
     - _SrcBlend: 1
     - _SssBumpBlur: 0.7
     - _SssScale: 1
@@ -1035,8 +1058,10 @@ Material:
     - _VertexRoundingDivision: 500
     - _VertexRoundingEnabled: 0
     - _VertexUnwrap: 0
+    - _VisualizeMask: 0
     - _ZTest: 4
     - _ZWrite: 1
+    - __dirty: 1
     - _commentIfZero_EnableOutlinePass: 0
     - _glitterFrequencyLinearEmissive: 20
     - footer_discord: 0
@@ -1329,6 +1354,7 @@ Material:
     - _DecalTexture2Pan: {r: 0, g: 0, b: 0, a: 0}
     - _DecalTexture3Pan: {r: 0, g: 0, b: 0, a: 0}
     - _DecalTexturePan: {r: 0, g: 0, b: 0, a: 0}
+    - _DetailColor: {r: 1, g: 1, b: 1, a: 0}
     - _DetailMaskPan: {r: 0, g: 0, b: 0, a: 0}
     - _DetailNormalMapPan: {r: 0, g: 0, b: 0, a: 0}
     - _DetailTexPan: {r: 0, g: 0, b: 0, a: 0}
@@ -1370,6 +1396,7 @@ Material:
     - _GlitterPan: {r: 0, g: 0, b: 0, a: 0}
     - _GlitterTexturePan: {r: 0, g: 0, b: 0, a: 0}
     - _GlitterUVPanning: {r: 0, g: 0, b: 0, a: 0}
+    - _GlobalXYTilingXYZWOffsetXY: {r: 1, g: 1, b: 0, a: 0}
     - _GreenColor: {r: 1, g: 1, b: 1, a: 1}
     - _LightingAOTexPan: {r: 0, g: 0, b: 0, a: 0}
     - _LightingDetailShadowsPan: {r: 0, g: 0, b: 0, a: 0}
@@ -1424,6 +1451,7 @@ Material:
     - _SpecularAnisoJitterMacroPan: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularAnisoJitterMicro1Pan: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularAnisoJitterMicroPan: {r: 0, g: 0, b: 0, a: 0}
+    - _SpecularColor: {r: 1, g: 1, b: 1, a: 0}
     - _SpecularMap1Pan: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularMapPan: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularMask1Pan: {r: 0, g: 0, b: 0, a: 0}

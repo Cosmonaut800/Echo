@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TargetFramerate : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class TargetFramerate : MonoBehaviour
 	public int target = 60;
 	public GameObject confirmQuitText;
 	public bool ended = false;
+	public PauseMenu pause;
 
 	private bool confirm = false;
 	private float timer = 0.0f;
@@ -25,11 +27,11 @@ public class TargetFramerate : MonoBehaviour
     {
 		if (Application.targetFrameRate != target) Application.targetFrameRate = target;
 
-		if(Input.GetKeyUp(KeyCode.Escape) && ended)
+		if((Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.P)) && ended)
 		{
 			if (confirm)
 			{
-				Application.Quit();
+				QuitGame();
 			}
 			confirm = true;
 		}
@@ -53,7 +55,8 @@ public class TargetFramerate : MonoBehaviour
 
 	public void QuitGame()
 	{
-		Application.Quit();
+		pause.Resume();
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
 	public void SetFullscreen(bool value)

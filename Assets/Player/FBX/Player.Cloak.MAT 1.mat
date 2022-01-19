@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Player.Cloak.MAT 1
-  m_Shader: {fileID: 4800000, guid: 917b37092bae034459c28c00a3a19b54, type: 3}
+  m_Shader: {fileID: 4800000, guid: ed04895971c00fc498c346df2ac0e9b4, type: 3}
   m_ShaderKeywords: VIGNETTE_MASKED _DETAILSOURCE_SPECULARALPHA _ENABLETRIPLANARPROJECTION_ON
     _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A _SOURCE_SPECULARALPHA _TRIPLANARSPACEPROJECTION_OBJECTSPACE
     _USEAOFROMMAINPROPERTIES_ON _USEEMISSIONFROMMAINPROPERTIES_ON
@@ -16,7 +16,9 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    OptimizedShaderFolder: Player.Cloak.MAT 1
+    OriginalShader: ".poiyomi/\u2022 Poiyomi Toon \u2022"
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -911,7 +913,7 @@ Material:
     - _PanoInfiniteStereoToggle: 0
     - _PanoMaskUV: 0
     - _PanoToggle: 0
-    - _Parallax: 0.02
+    - _Parallax: 0
     - _ParallaxBias: 0.42
     - _ParallaxHeightMapEnabled: 0
     - _ParallaxHeightMapMaskUV: 0
@@ -988,6 +990,7 @@ Material:
     - _SmoothnessMaskUV: 0
     - _SmoothnessTextureChannel: 0
     - _Source: 0
+    - _SourceMask: 0
     - _Spec1Offset: 0
     - _Spec1Offset1: 0
     - _Spec2Smoothness: 0
